@@ -1,0 +1,1540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#001F5B">
+<title>A-SHAPE Logical & Abstract Reasoning</title>
+<link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/en/1/13/Logo_of_the_Ateneo_Blue_Eagles.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original">
+
+<style>
+:root {
+    --navy: #001F5B;
+    --navy-light: #092f78;
+    --gold: #D9A928;
+    --gold-light: #F5D77A;
+    --white: #ffffff;
+    --bg: #f3f6fb;
+    --text: #17243a;
+    --muted: #6b7890;
+    --border: #dce3ee;
+    --green: #168653;
+    --red: #c43d48;
+    --shadow: 0 8px 28px rgba(0,31,91,.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+}
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+.topbar {
+    background: var(--navy);
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 4px solid var(--gold);
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--gold-light);
+    font-size: 19px;
+    font-weight: 900;
+}
+.brand small {
+    display: block;
+    color: #cbd7ee;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+.topbar-label {
+    color: #dce6f8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+.hero {
+    background: linear-gradient(125deg, #001743, #07347e);
+    color: white;
+    padding: 55px 6%;
+    position: relative;
+    overflow: hidden;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 35px solid rgba(255,255,255,.05);
+    border-radius: 50%;
+    right: -80px;
+    top: -90px;
+}
+.hero-content {
+    width: min(1100px, 100%);
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+.eyebrow {
+    color: var(--gold-light);
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.hero h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.12;
+    margin: 12px 0;
+    max-width: 750px;
+}
+.hero p {
+    color: #d9e4f8;
+    max-width: 650px;
+    margin: 0;
+}
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+.stat {
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.15);
+    padding: 12px 17px;
+    border-radius: 10px;
+    min-width: 115px;
+}
+.stat strong {
+    display: block;
+    color: var(--gold-light);
+    font-size: 20px;
+}
+.stat span {
+    font-size: 11px;
+    color: #d9e4f8;
+}
+.phase-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e8eef9;
+    color: var(--navy);
+    padding: 7px 12px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+.section-heading {
+    margin: 36px 0 18px;
+}
+.section-heading h2 {
+    color: var(--navy);
+    margin: 9px 0 5px;
+    font-size: 26px;
+}
+.section-heading p {
+    color: var(--muted);
+    margin: 0;
+}
+.tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 25px 0 18px;
+}
+.tab-btn {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 11px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+.tab-btn.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+}
+.lesson-panel { display: none; }
+.lesson-panel.active { display: block; }
+.lesson-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 22px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+.lesson-card h3 {
+    color: var(--navy);
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+.lesson-card h4 {
+    color: var(--navy);
+    margin: 20px 0 7px;
+    font-size: 14px;
+}
+.lesson-card p {
+    color: #536178;
+    margin: 8px 0;
+    font-size: 14px;
+}
+.lesson-card ul {
+    color: #536178;
+    padding-left: 21px;
+    font-size: 14px;
+}
+.lesson-card li { margin: 6px 0; }
+.rule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+.rule {
+    background: #f5f7fb;
+    border-left: 3px solid var(--gold);
+    border-radius: 7px;
+    padding: 12px;
+    font-size: 13px;
+}
+.rule strong {
+    color: var(--navy);
+    display: block;
+    margin-bottom: 3px;
+}
+.example {
+    background: #f5f8ff;
+    border: 1px solid #dce6f8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 14px;
+}
+.example-label {
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+.example p { margin: 7px 0; }
+.answer-note {
+    border-left: 3px solid var(--green);
+    background: #edf8f2;
+    padding: 11px 13px;
+    border-radius: 6px;
+    color: #245c40;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.tip {
+    background: #fff9e9;
+    border: 1px solid #f2e1ae;
+    border-radius: 9px;
+    padding: 13px 15px;
+    margin-top: 13px;
+    color: #71541a;
+    font-size: 13px;
+}
+.visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 4px;
+    overflow-x: auto;
+}
+.visual svg {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 auto;
+}
+.matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    gap: 5px;
+    width: max-content;
+    margin: 12px auto;
+}
+.matrix-cell {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #cbd5e5;
+    background: white;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+}
+.matrix-cell svg {
+    width: 48px;
+    height: 48px;
+}
+.start-area {
+    text-align: center;
+    padding: 35px 20px 55px;
+}
+.start-area h2 {
+    color: var(--navy);
+    margin: 0 0 8px;
+}
+.start-area p {
+    color: var(--muted);
+    margin: 0 0 20px;
+}
+.primary-btn, .secondary-btn, .danger-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 13px 20px;
+    font-weight: 800;
+    transition: .2s;
+}
+.primary-btn {
+    background: var(--gold);
+    color: #17243a;
+    box-shadow: 0 5px 14px rgba(217,169,40,.22);
+}
+.primary-btn:hover { background: #e9bd49; transform: translateY(-1px); }
+.secondary-btn {
+    background: #e9eef7;
+    color: var(--navy);
+}
+.secondary-btn:hover { background: #dce5f4; }
+.danger-btn {
+    background: #fff0f0;
+    color: var(--red);
+}
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+#examPhase, #resultsPhase { display: none; }
+.exam-top {
+    background: var(--navy);
+    color: white;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--gold);
+}
+.exam-top-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.exam-top h2 {
+    margin: 0;
+    font-size: 19px;
+}
+.exam-top p {
+    color: #d4e0f5;
+    margin: 3px 0 0;
+    font-size: 12px;
+}
+.timer {
+    background: white;
+    color: var(--navy);
+    border-radius: 9px;
+    padding: 9px 16px;
+    text-align: center;
+    min-width: 105px;
+}
+.timer span {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--muted);
+}
+.timer strong {
+    font-size: 23px;
+    font-variant-numeric: tabular-nums;
+}
+.timer.warning {
+    background: #fff0f0;
+    color: var(--red);
+}
+.exam-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 245px;
+    gap: 20px;
+    padding: 25px 0 50px;
+    align-items: start;
+}
+.question-card, .side-card, .result-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+.question-card { padding: 24px; }
+.question-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.topic-tag {
+    background: #eaf0fb;
+    color: var(--navy);
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 800;
+}
+.question-number {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+.question-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1b2941;
+    margin: 0 0 18px;
+}
+.question-visual {
+    background: #f8faff;
+    border: 1px solid #e4eaf4;
+    border-radius: 9px;
+    padding: 15px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+.question-visual svg {
+    max-width: 100%;
+    height: auto;
+}
+.options {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0;
+}
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .15s;
+    background: white;
+}
+.option:hover {
+    border-color: var(--navy-light);
+    background: #f7f9ff;
+}
+.option.selected {
+    border: 2px solid var(--navy);
+    background: #eff4ff;
+    padding: 12px;
+}
+.option input {
+    accent-color: var(--navy);
+    margin-top: 4px;
+}
+.option-content {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+}
+.option-content svg {
+    display: block;
+    width: 62px;
+    height: 50px;
+}
+.exam-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 22px;
+}
+.side-card {
+    padding: 18px;
+    margin-bottom: 14px;
+}
+.side-card h3 {
+    color: var(--navy);
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+.progress-track {
+    background: #e8edf5;
+    border-radius: 20px;
+    height: 8px;
+    overflow: hidden;
+}
+.progress-fill {
+    background: var(--gold);
+    height: 100%;
+    width: 0;
+    transition: .2s;
+}
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 7px;
+}
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+}
+.nav-number {
+    border: 1px solid var(--border);
+    background: #f8faff;
+    color: var(--muted);
+    height: 35px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.nav-number.current {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+}
+.nav-number.answered {
+    background: #e4f4eb;
+    color: var(--green);
+    border-color: #a8d8bd;
+}
+.nav-number.current.answered {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+}
+.scratchpad summary {
+    cursor: pointer;
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 14px;
+}
+.scratchpad textarea {
+    width: 100%;
+    min-height: 140px;
+    margin-top: 12px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    resize: vertical;
+    font-size: 13px;
+    outline-color: var(--navy);
+}
+.side-actions {
+    display: grid;
+    gap: 9px;
+}
+.side-actions button { width: 100%; font-size: 12px; }
+.result-hero {
+    background: linear-gradient(125deg, #001743, #07347e);
+    color: white;
+    padding: 38px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+}
+.result-hero h1 {
+    margin: 0;
+    font-size: 30px;
+}
+.score-circle {
+    width: 145px;
+    height: 145px;
+    border: 7px solid var(--gold);
+    border-radius: 50%;
+    margin: 20px auto 12px;
+    display: grid;
+    place-items: center;
+}
+.score-circle strong {
+    display: block;
+    font-size: 35px;
+    line-height: 1.1;
+}
+.score-circle span { font-size: 12px; color: #dce6f8; }
+.result-content { padding: 30px 0 55px; }
+.result-card { padding: 22px; margin-bottom: 18px; }
+.result-card h2 {
+    color: var(--navy);
+    font-size: 19px;
+    margin: 0 0 16px;
+}
+.breakdown-row { margin: 15px 0; }
+.breakdown-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.breakdown-track {
+    height: 9px;
+    background: #e9eef6;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.breakdown-fill {
+    height: 100%;
+    background: var(--gold);
+}
+.review-item {
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 15px;
+    margin: 12px 0;
+}
+.review-item.correct { border-left: 4px solid var(--green); }
+.review-item.incorrect { border-left: 4px solid var(--red); }
+.review-item h3 {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-size: 14px;
+}
+.review-item p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #536178;
+}
+.review-item details { margin-top: 10px; }
+.review-item summary {
+    cursor: pointer;
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 12px;
+}
+.explanation {
+    background: #f5f8ff;
+    padding: 12px;
+    border-radius: 7px;
+    margin-top: 9px;
+}
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 25px 0;
+}
+footer {
+    background: #001438;
+    color: #cbd7ee;
+    padding: 24px 6%;
+    text-align: center;
+    font-size: 12px;
+    border-top: 3px solid var(--gold);
+}
+footer strong { color: var(--gold-light); }
+.hidden { display: none !important; }
+@media (max-width: 800px) {
+    .exam-layout { grid-template-columns: 1fr; }
+    .exam-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .exam-sidebar .side-card { margin: 0; }
+}
+@media (max-width: 560px) {
+    .topbar { padding: 12px 4%; }
+    .topbar-label { display: none; }
+    .hero { padding: 38px 5%; }
+    .rule-grid { grid-template-columns: 1fr; }
+    .lesson-card { padding: 17px; }
+    .exam-sidebar { grid-template-columns: 1fr; }
+    .question-card { padding: 17px; }
+    .question-text { font-size: 15px; }
+    .exam-controls button { padding: 11px 13px; font-size: 12px; }
+    .result-card { padding: 16px; }
+}
+@media print {
+    .topbar, footer, .result-actions, .exam-top { display: none !important; }
+    body { background: white; }
+    .result-card { box-shadow: none; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+            A-SHAPE LOGICAL & ABSTRACT REASONING
+        </div>
+    </div>
+    <div class="topbar-label">ACADEMIC PREPARATION</div>
+</header>
+
+<main id="studyPhase">
+    <section class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">A-SHAPE • LOGICAL REASONING SUBTEST</div>
+            <h1>Bonne chance pour ton examen!<br>
+            Makapapasok ka sa ADMU!</h1>
+            <p>Strengthen your abstract, spatial, numerical, and deductive reasoning skills through guided lessons and a timed practice examination.</p>
+            <div class="stats">
+                <div class="stat"><strong>4</strong><span>Core Topics</span></div>
+                <div class="stat"><strong>20</strong><span>Practice Questions</span></div>
+                <div class="stat"><strong>20 min</strong><span>Exam Duration</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-heading">
+            <span class="phase-label">Phase 1 • Study Mode</span>
+            <h2>Interactive Lesson & Pattern Guide</h2>
+            <p>Learn the common rules, shortcuts, and strategies used in logical and abstract reasoning questions.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="abstract">01. Abstract Shapes</button>
+            <button class="tab-btn" data-tab="spatial">02. Spatial Reasoning</button>
+            <button class="tab-btn" data-tab="series">03. Number & Letter Series</button>
+            <button class="tab-btn" data-tab="logic">04. Deductive Logic</button>
+        </div>
+
+        <section class="lesson-panel active" id="abstract">
+            <article class="lesson-card">
+                <h3>1. Abstract Shape Sequences & Matrices</h3>
+                <p>Abstract reasoning tests whether you can recognize visual rules and predict what comes next. Do not guess based on appearance alone. Track one feature at a time.</p>
+                <div class="rule-grid">
+                    <div class="rule"><strong>Rotation</strong>Check whether a shape turns by a fixed angle, such as 90°, 180°, or 45°.</div>
+                    <div class="rule"><strong>Reflection</strong>Look for a horizontal, vertical, or diagonal mirror flip.</div>
+                    <div class="rule"><strong>Shading</strong>Observe whether filled and unfilled sections alternate or invert.</div>
+                    <div class="rule"><strong>Addition & Subtraction</strong>Count the lines, dots, corners, or shapes being added or removed.</div>
+                    <div class="rule"><strong>Position</strong>Track movement around corners, sides, or positions in a grid.</div>
+                    <div class="rule"><strong>3×3 Matrices</strong>Compare each row and column to find a consistent transformation.</div>
+                </div>
+                <h4>How to solve a 3×3 matrix</h4>
+                <ul>
+                    <li>Compare the first and second figures in a row.</li>
+                    <li>Determine what changes: rotation, shading, count, or position.</li>
+                    <li>Apply the same rule to the third figure.</li>
+                    <li>Check the columns too. A valid rule should be consistent.</li>
+                </ul>
+                <div class="example">
+                    <div class="example-label">Worked example • Rotation</div>
+                    <div class="visual">
+                        <svg viewBox="0 0 70 70"><polygon points="35,8 59,55 11,55" fill="#001F5B"/></svg>
+                        <span>→</span>
+                        <svg viewBox="0 0 70 70"><polygon points="35,8 59,55 11,55" transform="rotate(90 35 35)" fill="#001F5B"/></svg>
+                        <span>→</span>
+                        <svg viewBox="0 0 70 70"><polygon points="35,8 59,55 11,55" transform="rotate(180 35 35)" fill="#001F5B"/></svg>
+                        <span>→</span>
+                        <svg viewBox="0 0 70 70"><polygon points="35,8 59,55 11,55" transform="rotate(270 35 35)" fill="#001F5B"/></svg>
+                    </div>
+                    <p><strong>Question:</strong> What transformation occurs between each figure?</p>
+                    <div class="answer-note">Answer: A 90° clockwise rotation. The shape stays the same; only its orientation changes.</div>
+                </div>
+                <div class="tip"><strong>Elimination shortcut:</strong> If the number of sides stays constant, eliminate choices with a different shape. Then compare orientation and shading.</div>
+            </article>
+            <article class="lesson-card">
+                <h3>Visual Pattern Checklist</h3>
+                <p>When a figure sequence looks confusing, inspect it in this order:</p>
+                <ul>
+                    <li>Count the objects or parts.</li>
+                    <li>Check whether any part rotates or flips.</li>
+                    <li>Compare filled and unfilled regions.</li>
+                    <li>Check whether objects move clockwise or counterclockwise.</li>
+                    <li>Look for a rule that repeats every two or three figures.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="lesson-panel" id="spatial">
+            <article class="lesson-card">
+                <h3>2. Spatial & Visual Reasoning</h3>
+                <p>Spatial reasoning measures how well you imagine objects changing position or form. You may need to fold paper mentally, rotate a cube, or identify a reflection.</p>
+                <div class="rule-grid">
+                    <div class="rule"><strong>Cube Nets</strong>A cube has six square faces. Opposite faces cannot share an edge after folding.</div>
+                    <div class="rule"><strong>Paper Folding</strong>Every fold creates symmetry. A hole punched through folded layers appears in mirrored positions when unfolded.</div>
+                    <div class="rule"><strong>Mirror Reflection</strong>A mirror reverses left and right. The object stays the same distance from the mirror.</div>
+                    <div class="rule"><strong>Water Reflection</strong>A water reflection reverses top and bottom, as if flipped across a horizontal line.</div>
+                    <div class="rule"><strong>Odd One Out</strong>Compare sides, angles, orientation, shading, and number of parts.</div>
+                    <div class="rule"><strong>Figure Grouping</strong>Find the shared feature among a group, such as equal sides or matching orientation.</div>
+                </div>
+                <h4>Cube net reminder</h4>
+                <p>A common cube net has four squares in a row, with one square attached above and one below one of the middle squares.</p>
+                <div class="example">
+                    <div class="example-label">Worked example • Paper folding</div>
+                    <div class="visual">
+                        <svg viewBox="0 0 230 105" width="230" height="105">
+                            <rect x="8" y="10" width="65" height="65" fill="#fff" stroke="#001F5B" stroke-width="2"/>
+                            <path d="M40 10 V75" stroke="#D9A928" stroke-width="2" stroke-dasharray="4 3"/>
+                            <circle cx="55" cy="42" r="5" fill="#001F5B"/>
+                            <path d="M82 43 H111" stroke="#001F5B" stroke-width="2"/>
+                            <path d="M104 36 L112 43 L104 50" fill="none" stroke="#001F5B" stroke-width="2"/>
+                            <rect x="126" y="10" width="65" height="65" fill="#fff" stroke="#001F5B" stroke-width="2"/>
+                            <path d="M158 10 V75" stroke="#D9A928" stroke-width="2" stroke-dasharray="4 3"/>
+                            <circle cx="143" cy="42" r="5" fill="#001F5B"/>
+                            <circle cx="173" cy="42" r="5" fill="#001F5B"/>
+                            <text x="40" y="94" text-anchor="middle" font-size="10" fill="#536178">Folded</text>
+                            <text x="158" y="94" text-anchor="middle" font-size="10" fill="#536178">Unfolded</text>
+                        </svg>
+                    </div>
+                    <p><strong>Question:</strong> A square paper is folded in half vertically. A hole is punched away from the fold. What happens when the paper is opened?</p>
+                    <div class="answer-note">Answer: Two holes appear, mirrored across the fold line. Each folded layer receives a hole at the matching position.</div>
+                </div>
+                <div class="tip"><strong>Elimination shortcut:</strong> For cube nets, identify opposite faces first. A face cannot be adjacent to its opposite face after folding.</div>
+            </article>
+            <article class="lesson-card">
+                <h3>Quick Spatial Checks</h3>
+                <ul>
+                    <li>For mirror images, compare left and right details.</li>
+                    <li>For water reflections, compare top and bottom details.</li>
+                    <li>For cube questions, mentally fold the net around a center square.</li>
+                    <li>For odd-one-out questions, test one property at a time.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="lesson-panel" id="series">
+            <article class="lesson-card">
+                <h3>3. Number & Alphanumeric Series</h3>
+                <p>A series is a sequence that follows a mathematical or alphabetical rule. Your goal is to discover the operation and apply it consistently.</p>
+                <div class="rule-grid">
+                    <div class="rule"><strong>Arithmetic</strong>Add or subtract the same number each time. Example: 4, 7, 10, 13.</div>
+                    <div class="rule"><strong>Geometric</strong>Multiply or divide by the same number. Example: 3, 6, 12, 24.</div>
+                    <div class="rule"><strong>Alternating</strong>Two separate patterns may be interleaved. Check odd and even positions separately.</div>
+                    <div class="rule"><strong>Prime Numbers</strong>Numbers with exactly two positive factors: 2, 3, 5, 7, 11, 13.</div>
+                    <div class="rule"><strong>Squares & Cubes</strong>Squares: 1, 4, 9, 16, 25. Cubes: 1, 8, 27, 64.</div>
+                    <div class="rule"><strong>Letter Positions</strong>Use A=1, B=2, C=3 ... Z=26 to find alphabetical shifts.</div>
+                </div>
+                <h4>Useful series strategies</h4>
+                <ul>
+                    <li>Calculate the differences between consecutive terms.</li>
+                    <li>If differences are not constant, calculate the second differences.</li>
+                    <li>Check multiplication or division if values grow quickly.</li>
+                    <li>Separate odd-position and even-position terms for alternating patterns.</li>
+                    <li>For letters, convert them to alphabet positions before comparing.</li>
+                </ul>
+                <div class="example">
+                    <div class="example-label">Worked example • Alternating series</div>
+                    <div class="visual">
+                        <strong style="font-size:19px;color:#001F5B;">2, 10, 4, 20, 6, 30, ?</strong>
+                    </div>
+                    <p><strong>Step 1:</strong> Separate the odd positions: 2, 4, 6, ?</p>
+                    <p><strong>Step 2:</strong> The odd-position terms increase by 2.</p>
+                    <p><strong>Step 3:</strong> The even-position terms are 10, 20, 30.</p>
+                    <div class="answer-note">Answer: 8. The next odd-position term is 8.</div>
+                </div>
+                <div class="example">
+                    <div class="example-label">Worked example • Letter shifts</div>
+                    <div class="visual"><strong style="font-size:22px;color:#001F5B;">B, E, H, K, ?</strong></div>
+                    <p>B=2, E=5, H=8, K=11. Each letter advances by 3 positions.</p>
+                    <div class="answer-note">Answer: N (position 14).</div>
+                </div>
+                <div class="tip"><strong>Elimination shortcut:</strong> Before trying complicated operations, check simple differences, multiplication, squares, and alternating patterns.</div>
+            </article>
+        </section>
+
+        <section class="lesson-panel" id="logic">
+            <article class="lesson-card">
+                <h3>4. Deductive Logic & Situational Aptitude</h3>
+                <p>Deductive reasoning asks you to reach a conclusion using only the facts given. Do not add assumptions that are not stated in the question.</p>
+                <div class="rule-grid">
+                    <div class="rule"><strong>Syllogisms</strong>Use general statements to determine what must be true. Separate facts from assumptions.</div>
+                    <div class="rule"><strong>Truth-tellers & Liars</strong>Truth-tellers always tell the truth; liars always make false statements. Test each possibility.</div>
+                    <div class="rule"><strong>Ordering & Ranking</strong>Translate clues into a sequence. For example, if A is before B and B before C, then A is before C.</div>
+                    <div class="rule"><strong>Seating Arrangements</strong>Draw spaces for people. Mark left, right, next to, and opposite carefully.</div>
+                    <div class="rule"><strong>If-Then Statements</strong>If P then Q means P guarantees Q. It does not mean Q automatically guarantees P.</div>
+                    <div class="rule"><strong>Situational Aptitude</strong>Choose the response that is reasonable, responsible, fair, and supported by the situation.</div>
+                </div>
+                <h4>Important conditional logic</h4>
+                <ul>
+                    <li>If P → Q, then P is sufficient for Q.</li>
+                    <li>If P → Q, then not Q means not P.</li>
+                    <li>Do not reverse the statement: Q does not necessarily mean P.</li>
+                    <li>Do not confuse “some” with “all.”</li>
+                </ul>
+                <div class="example">
+                    <div class="example-label">Worked example • Syllogism</div>
+                    <p>All athletes exercise regularly. Mia is an athlete.</p>
+                    <p><strong>Question:</strong> What must be true?</p>
+                    <div class="answer-note">Answer: Mia exercises regularly. This follows directly from the two statements.</div>
+                </div>
+                <div class="example">
+                    <div class="example-label">Worked example • Ordering</div>
+                    <p>Ben is taller than Ana. Ana is taller than Carlo.</p>
+                    <p><strong>Question:</strong> Who is the tallest?</p>
+                    <div class="answer-note">Answer: Ben. The order is Ben → Ana → Carlo, from tallest to shortest.</div>
+                </div>
+                <div class="tip"><strong>Elimination shortcut:</strong> Remove answers that contradict a given fact, introduce an unstated assumption, or claim more than the clues prove.</div>
+            </article>
+        </section>
+
+        <div class="start-area">
+            <h2>Ready to Test Your Reasoning?</h2>
+            <p>Apply what you learned in a 20-question timed practice exam.</p>
+            <button class="primary-btn" id="startExamBtn">I'm Ready — Start Practice Exam →</button>
+        </div>
+    </div>
+</main>
+
+<section id="examPhase">
+    <div class="exam-top">
+        <div class="container exam-top-inner">
+            <div>
+                <h2>A-SHAPE Logical & Abstract Reasoning</h2>
+                <p>Practice Examination • 20 Questions</p>
+            </div>
+            <div class="timer" id="timerBox">
+                <span>Time Remaining</span>
+                <strong id="timerDisplay">20:00</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="container exam-layout">
+        <div>
+            <div class="question-card">
+                <div class="question-meta">
+                    <span class="topic-tag" id="questionTopic">Abstract Shapes</span>
+                    <span class="question-number" id="questionNumber">Question 1 of 20</span>
+                </div>
+                <p class="question-text" id="questionText"></p>
+                <div class="question-visual hidden" id="questionVisual"></div>
+                <div class="options" id="optionsContainer"></div>
+                <div class="exam-controls">
+                    <button class="secondary-btn" id="previousBtn">← Previous</button>
+                    <button class="primary-btn" id="nextBtn">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="exam-sidebar">
+            <div class="side-card">
+                <h3>Exam Progress</h3>
+                <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-text">
+                    <span id="answeredText">0 of 20 answered</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+            <div class="side-card">
+                <h3>Question Navigator</h3>
+                <div class="nav-grid" id="navGrid"></div>
+            </div>
+            <div class="side-card">
+                <details class="scratchpad">
+                    <summary>Scratchpad / Notes</summary>
+                    <textarea id="scratchpad" placeholder="Write your calculations, patterns, and notes here..."></textarea>
+                </details>
+            </div>
+            <div class="side-card side-actions">
+                <button class="secondary-btn" id="backLessonsBtn">← Back to Lessons</button>
+                <button class="primary-btn" id="submitExamBtn">Submit Exam</button>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section id="resultsPhase">
+    <div class="result-hero">
+        <div class="eyebrow">A-SHAPE PRACTICE EXAM</div>
+        <h1>Examination Results</h1>
+        <div class="score-circle">
+            <div>
+                <strong id="finalScore">0/20</strong>
+                <span id="finalPercent">0%</span>
+            </div>
+        </div>
+        <p id="resultMessage">Your results are ready.</p>
+    </div>
+    <div class="container result-content">
+        <div class="result-card">
+            <h2>Score Breakdown by Topic</h2>
+            <div id="topicBreakdown"></div>
+        </div>
+        <div class="result-card">
+            <h2>Answer Review & Explanations</h2>
+            <p style="color:#6b7890;font-size:13px;margin-top:-8px;">Review each question to understand the correct answer and the reasoning behind it.</p>
+            <div id="answerReview"></div>
+        </div>
+        <div class="result-actions">
+            <button class="primary-btn" id="retakeBtn">Retake Exam</button>
+            <button class="secondary-btn" id="lessonsBtn">Review Lessons</button>
+            <button class="secondary-btn" id="printBtn">Print Results</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <strong style="color:white">A-SHAPE Logical & Abstract Reasoning Preparation</strong><br>
+    © Angel loves Ysa </p>
+</footer>
+
+<script>
+const topics = [
+    "Abstract Shapes",
+    "Spatial & Visual Reasoning",
+    "Number & Alphanumeric Series",
+    "Deductive Logic"
+];
+
+const svg = (content, width=180, height=90) =>
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">${content}</svg>`;
+
+const triangle = (rotation=0, fill="#001F5B") =>
+    svg(`<polygon points="45,10 78,75 12,75" fill="${fill}" transform="rotate(${rotation} 45 45)"/>`,90,90);
+
+const square = (rotation=0, fill="#001F5B") =>
+    svg(`<rect x="19" y="19" width="52" height="52" rx="2" fill="${fill}" transform="rotate(${rotation} 45 45)"/>`,90,90);
+
+const circle = (fill="#001F5B", extra="") =>
+    svg(`<circle cx="45" cy="45" r="27" fill="${fill}" ${extra}/>`,90,90);
+
+const diamond = (fill="#001F5B") =>
+    svg(`<polygon points="45,9 80,45 45,81 10,45" fill="${fill}"/>`,90,90);
+
+const dotShape = (count) => {
+    let dots = "";
+    const positions = [[30,30],[60,30],[45,45],[30,60],[60,60],[45,15]];
+    positions.slice(0,count).forEach(([x,y]) => dots += `<circle cx="${x}" cy="${y}" r="6" fill="#001F5B"/>`);
+    return svg(dots,90,90);
+};
+
+const questions = [
+{
+topic:0,
+text:"Study the sequence. Which figure should come next?",
+visual:svg(`
+<polygon points="45,10 78,75 12,75" fill="#001F5B"/>
+<path d="M100 45 H125 M118 38 L125 45 L118 52" stroke="#D9A928" stroke-width="3" fill="none"/>
+<polygon points="160,10 193,75 127,75" fill="#001F5B" transform="rotate(90 160 45)"/>
+<path d="M215 45 H240 M233 38 L240 45 L233 52" stroke="#D9A928" stroke-width="3" fill="none"/>
+<polygon points="275,10 308,75 242,75" fill="#001F5B" transform="rotate(180 275 45)"/>
+<path d="M330 45 H355 M348 38 L355 45 L348 52" stroke="#D9A928" stroke-width="3" fill="none"/>
+<polygon points="395,10 428,75 362,75" fill="#001F5B" transform="rotate(270 395 45)"/>
+`,440,90),
+options:["Triangle pointing upward","Triangle pointing right","Triangle pointing downward","Triangle pointing left"],
+optionVisuals:[triangle(0),triangle(90),triangle(180),triangle(270)],
+answer:0,
+explanation:"The triangle rotates 90° clockwise each time: up, right, down, left. The next figure returns to the upward position."
+},
+{
+topic:0,
+text:"A shape changes its shading in the following sequence. What comes next?",
+visual:svg(`
+<circle cx="35" cy="45" r="25" fill="#001F5B"/>
+<path d="M35 20 A25 25 0 0 1 35 70 Z" fill="white"/>
+<path d="M90 45 H115 M108 38 L115 45 L108 52" stroke="#D9A928" stroke-width="3" fill="none"/>
+<circle cx="155" cy="45" r="25" fill="white" stroke="#001F5B" stroke-width="2"/>
+<path d="M155 20 A25 25 0 0 0 155 70 Z" fill="#001F5B"/>
+<path d="M210 45 H235 M228 38 L235 45 L228 52" stroke="#D9A928" stroke-width="3" fill="none"/>
+<circle cx="275" cy="45" r="25" fill="#001F5B"/>
+<path d="M275 20 A25 25 0 0 1 275 70 Z" fill="white"/>
+`,300,90),
+options:["First half dark, second half light","Both halves dark","Both halves light","First half light, second half dark"],
+answer:0,
+explanation:"The shading alternates between two arrangements. The third figure matches the first, so the next figure matches the second: the left half is light and the right half is dark."
+},
+{
+topic:0,
+text:"Each row follows the same rule. Which figure completes the matrix?",
+visual:svg(`
+<rect x="4" y="4" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="72" y="4" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="140" y="4" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<circle cx="30" cy="30" r="12" fill="#001F5B"/>
+<circle cx="98" cy="30" r="12" fill="none" stroke="#001F5B" stroke-width="3"/>
+<circle cx="166" cy="30" r="12" fill="#001F5B"/>
+<rect x="4" y="72" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="72" y="72" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="140" y="72" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="18" y="86" width="24" height="24" fill="#001F5B"/>
+<rect x="86" y="86" width="24" height="24" fill="none" stroke="#001F5B" stroke-width="3"/>
+<rect x="154" y="86" width="24" height="24" fill="#001F5B"/>
+<rect x="4" y="140" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="72" y="140" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<rect x="140" y="140" width="52" height="52" fill="none" stroke="#9aa9bd"/>
+<polygon points="30,150 48,180 12,180" fill="#001F5B"/>
+<polygon points="98,150 116,180 80,180" fill="none" stroke="#001F5B" stroke-width="3"/>
+<text x="166" y="177" text-anchor="middle" font-size="23" fill="#001F5B">?</text>
+`,200,200),
+options:["Filled triangle","Outline triangle","Filled circle","Outline square"],
+optionVisuals:[triangle(0),triangle(0,"white"),circle(),square(0,"white")],
+answer:0,
+explanation:"In every row, the first and third figures are filled while the middle figure is outlined. The missing figure is a filled triangle."
+},
+{
+topic:0,
+text:"The number of small circles increases by a fixed amount. How many circles should appear next?",
+visual:svg(`
+<circle cx="25" cy="25" r="5" fill="#001F5B"/>
+<circle cx="80" cy="25" r="5" fill="#001F5B"/><circle cx="96" cy="25" r="5" fill="#001F5B"/>
+<circle cx="151" cy="25" r="5" fill="#001F5B"/><circle cx="167" cy="25" r="5" fill="#001F5B"/><circle cx="183" cy="25" r="5" fill="#001F5B"/>
+`,210,50),
+options:["3","4","5","6"],
+answer:3,
+explanation:"The sequence contains 1, 2, and 3 circles. One circle is added each time, so the next figure contains 4 circles. Wait: the fourth term is 4, making option B the correct answer.",
+correctedAnswer:1
+},
+{
+topic:1,
+text:"Which option shows the correct mirror image of the arrow?",
+visual:svg(`
+<path d="M25 45 H105 M85 25 L105 45 L85 65" stroke="#001F5B" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="125" y1="10" x2="125" y2="80" stroke="#D9A928" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="25" y="88" font-size="10" fill="#536178">Object</text>
+<text x="135" y="88" font-size="10" fill="#536178">Mirror</text>
+`,150,95),
+options:["Arrow pointing right","Arrow pointing left","Arrow pointing upward","Arrow pointing downward"],
+optionVisuals:[
+svg(`<path d="M10 25 H55 M40 10 L55 25 L40 40" stroke="#001F5B" stroke-width="5" fill="none"/>`,65,50),
+svg(`<path d="M55 25 H10 M25 10 L10 25 L25 40" stroke="#001F5B" stroke-width="5" fill="none"/>`,65,50),
+svg(`<path d="M32 40 V8 M17 23 L32 8 L47 23" stroke="#001F5B" stroke-width="5" fill="none"/>`,65,50),
+svg(`<path d="M32 8 V40 M17 25 L32 40 L47 25" stroke="#001F5B" stroke-width="5" fill="none"/>`,65,50)
+],
+answer:1,
+explanation:"A vertical mirror reverses left and right. The original arrow points right, so its mirror image points left."
+},
+{
+topic:1,
+text:"A square paper is folded in half vertically. One hole is punched near the right edge of the folded paper. When unfolded, how many holes will appear?",
+options:["One","Two","Three","Four"],
+answer:1,
+explanation:"The paper has two layers after one fold. A hole punched through both layers creates two matching holes when unfolded."
+},
+{
+topic:1,
+text:"Which of the following is a valid cube net?",
+visual:svg(`
+<g fill="#e8eef8" stroke="#001F5B" stroke-width="2">
+<rect x="10" y="25" width="25" height="25"/><rect x="35" y="25" width="25" height="25"/><rect x="60" y="25" width="25" height="25"/><rect x="85" y="25" width="25" height="25"/><rect x="35" y="0" width="25" height="25"/><rect x="35" y="50" width="25" height="25"/>
+</g>
+`,120,80),
+options:["Four squares in a row, with one square above and one below the second square","Six squares in a straight line","Three squares in a row, with three squares attached to the same side","Two separate groups of three squares"],
+answer:0,
+explanation:"The first arrangement is a standard valid cube net. The four squares form the side faces, while the two attached squares fold to become the top and bottom."
+},
+{
+topic:1,
+text:"Which figure is the odd one out based on the number of sides?",
+visual:svg(`
+<polygon points="35,5 65,25 55,60 15,60 5,25" fill="none" stroke="#001F5B" stroke-width="3"/>
+<rect x="90" y="15" width="45" height="45" fill="none" stroke="#001F5B" stroke-width="3"/>
+<polygon points="180,5 210,60 150,60" fill="none" stroke="#001F5B" stroke-width="3"/>
+<polygon points="255,5 285,25 275,60 235,60 225,25" fill="none" stroke="#001F5B" stroke-width="3"/>
+`,300,70),
+options:["First figure","Second figure","Third figure","Fourth figure"],
+answer:2,
+explanation:"The first and fourth figures have five sides, and the second has four. The third is the only triangle, with three sides."
+},
+{
+topic:1,
+text:"A shape is reflected across a horizontal waterline. Which feature is reversed?",
+options:["Left and right","Top and bottom","Size and color","Number of sides"],
+answer:1,
+explanation:"A horizontal reflection, like a water reflection, reverses the vertical orientation. The top and bottom switch positions."
+},
+{
+topic:2,
+text:"What number comes next? 7, 11, 15, 19, 23, ___",
+options:["25","26","27","28"],
+answer:2,
+explanation:"Each term increases by 4. Therefore, 23 + 4 = 27."
+},
+{
+topic:2,
+text:"Find the missing number: 3, 6, 12, 24, 48, ___",
+options:["72","84","96","108"],
+answer:2,
+explanation:"Each term is multiplied by 2. Therefore, 48 × 2 = 96."
+},
+{
+topic:2,
+text:"What number completes the alternating sequence? 5, 20, 7, 40, 9, 60, ___",
+options:["10","11","12","80"],
+answer:1,
+explanation:"Separate the odd and even positions. Odd positions: 5, 7, 9, so the next odd-position term is 11. Even positions: 20, 40, 60."
+},
+{
+topic:2,
+text:"Which number comes next in the sequence? 1, 4, 9, 16, 25, ___",
+options:["30","32","36","49"],
+answer:2,
+explanation:"These are perfect squares: 1², 2², 3², 4², 5². The next term is 6² = 36."
+},
+{
+topic:2,
+text:"Find the next letter: C, F, I, L, O, ___",
+options:["P","Q","R","S"],
+answer:2,
+explanation:"The letter positions are 3, 6, 9, 12, 15. Each increases by 3, so the next position is 18, which is R."
+},
+{
+topic:2,
+text:"What is the next number? 2, 3, 5, 7, 11, 13, ___",
+options:["15","16","17","19"],
+answer:2,
+explanation:"The sequence lists prime numbers in ascending order. The next prime number after 13 is 17."
+},
+{
+topic:3,
+text:"All members of the debate club are students. Lara is a member of the debate club. Which conclusion must be true?",
+options:["Lara is a teacher","Lara is a student","All students are in the debate club","Lara is the club president"],
+answer:1,
+explanation:"The first statement says every debate club member is a student. Since Lara is a member, she must be a student. The other choices are not supported."
+},
+{
+topic:3,
+text:"Three friends are standing in a line. Ana is ahead of Ben. Ben is ahead of Carlo. Who is last in line?",
+options:["Ana","Ben","Carlo","Cannot be determined"],
+answer:2,
+explanation:"The order is Ana, Ben, Carlo. Carlo is behind both Ana and Ben, so he is last."
+},
+{
+topic:3,
+text:"If it rains, the outdoor event will be moved indoors. The event was NOT moved indoors. What can you conclude?",
+options:["It rained","It did not rain","The event was cancelled","The event was delayed"],
+answer:1,
+explanation:"If rain always causes the event to move indoors, then the event not being moved indoors means the condition did not happen. Therefore, it did not rain."
+},
+{
+topic:3,
+text:"Ava, Bea, and Cia are seated in a row. Ava is not at either end. Bea sits to the left of Ava. Who sits in the middle?",
+options:["Ava","Bea","Cia","Cannot be determined"],
+answer:0,
+explanation:"Ava cannot sit at either end, so she must occupy the middle seat. Bea is to her left, and Cia is to her right."
+},
+{
+topic:3,
+text:"A school committee must choose one responsible action after discovering that a shared classroom resource is damaged. Which response is most appropriate?",
+options:["Blame a classmate without checking what happened","Hide the damage to avoid responsibility","Inform the teacher and explain what was observed","Ignore the damage because it is not personal property"],
+answer:2,
+explanation:"The most responsible action is to inform the teacher and accurately explain what was observed. This is honest, constructive, and helps the school address the problem."
+}
+];
+
+let currentQuestion = 0;
+let answers = Array(questions.length).fill(null);
+let timeLeft = 20 * 60;
+let timerInterval = null;
+let examSubmitted = false;
+
+const $ = id => document.getElementById(id);
+
+function showStudy() {
+    clearInterval(timerInterval);
+    $("studyPhase").style.display = "block";
+    $("examPhase").style.display = "none";
+    $("resultsPhase").style.display = "none";
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showExam() {
+    $("studyPhase").style.display = "none";
+    $("examPhase").style.display = "block";
+    $("resultsPhase").style.display = "none";
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showResults() {
+    $("studyPhase").style.display = "none";
+    $("examPhase").style.display = "none";
+    $("resultsPhase").style.display = "block";
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".lesson-panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        $(btn.dataset.tab).classList.add("active");
+    });
+});
+
+function startExam() {
+    clearInterval(timerInterval);
+    currentQuestion = 0;
+    answers = Array(questions.length).fill(null);
+    timeLeft = 20 * 60;
+    examSubmitted = false;
+    $("scratchpad").value = "";
+    $("timerBox").classList.remove("warning");
+    showExam();
+    renderNavigation();
+    renderQuestion();
+    updateProgress();
+    updateTimer();
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            submitExam(true);
+        }
+    }, 1000);
+}
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    $("timerDisplay").textContent =
+        String(minutes).padStart(2,"0") + ":" + String(seconds).padStart(2,"0");
+    if (timeLeft <= 120) $("timerBox").classList.add("warning");
+}
+
+function renderQuestion() {
+    const q = questions[currentQuestion];
+    $("questionTopic").textContent = topics[q.topic];
+    $("questionNumber").textContent = `Question ${currentQuestion+1} of ${questions.length}`;
+    $("questionText").textContent = q.text;
+
+    const visual = $("questionVisual");
+    if (q.visual) {
+        visual.innerHTML = q.visual;
+        visual.classList.remove("hidden");
+    } else {
+        visual.innerHTML = "";
+        visual.classList.add("hidden");
+    }
+
+    const container = $("optionsContainer");
+    container.innerHTML = "";
+
+    q.options.forEach((option,index) => {
+        const label = document.createElement("label");
+        label.className = "option" + (answers[currentQuestion] === index ? " selected" : "");
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "answer";
+        radio.value = index;
+        radio.checked = answers[currentQuestion] === index;
+        radio.addEventListener("change", () => {
+            answers[currentQuestion] = index;
+            renderQuestion();
+            renderNavigation();
+            updateProgress();
+        });
+
+        const content = document.createElement("div");
+        content.className = "option-content";
+        if (q.optionVisuals) {
+            content.innerHTML = `<span>${String.fromCharCode(65+index)}.</span>${q.optionVisuals[index]}`;
+            const text = document.createElement("div");
+            text.textContent = option;
+            text.style.fontSize = "12px";
+            text.style.color = "#536178";
+            content.appendChild(text);
+        } else {
+            content.textContent = `${String.fromCharCode(65+index)}. ${option}`;
+        }
+        label.append(radio,content);
+        container.appendChild(label);
+    });
+
+    $("previousBtn").disabled = currentQuestion === 0;
+    $("nextBtn").textContent = currentQuestion === questions.length-1 ? "Review Answers →" : "Next →";
+}
+
+function renderNavigation() {
+    const grid = $("navGrid");
+    grid.innerHTML = "";
+    questions.forEach((q,index) => {
+        const btn = document.createElement("button");
+        btn.className = "nav-number";
+        if (answers[index] !== null) btn.classList.add("answered");
+        if (index === currentQuestion) btn.classList.add("current");
+        btn.textContent = index + 1;
+        btn.title = `Question ${index+1}`;
+        btn.addEventListener("click", () => {
+            currentQuestion = index;
+            renderQuestion();
+            renderNavigation();
+        });
+        grid.appendChild(btn);
+    });
+}
+
+function updateProgress() {
+    const count = answers.filter(a => a !== null).length;
+    const percent = Math.round(count / questions.length * 100);
+    $("progressFill").style.width = percent + "%";
+    $("answeredText").textContent = `${count} of ${questions.length} answered`;
+    $("progressPercent").textContent = percent + "%";
+}
+
+$("previousBtn").addEventListener("click", () => {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+        renderNavigation();
+    }
+});
+
+$("nextBtn").addEventListener("click", () => {
+    if (currentQuestion < questions.length-1) {
+        currentQuestion++;
+        renderQuestion();
+        renderNavigation();
+    } else {
+        const unanswered = answers.filter(a => a === null).length;
+        alert(unanswered
+            ? `You still have ${unanswered} unanswered question(s). Use the question navigator to review them.`
+            : "You have reached the final question. You may submit your exam when ready.");
+    }
+});
+
+$("startExamBtn").addEventListener("click", startExam);
+$("retakeBtn").addEventListener("click", startExam);
+$("backLessonsBtn").addEventListener("click", () => {
+    if (confirm("Return to the lessons? Your current exam progress will be lost.")) {
+        showStudy();
+    }
+});
+$("lessonsBtn").addEventListener("click", showStudy);
+$("printBtn").addEventListener("click", () => window.print());
+
+$("submitExamBtn").addEventListener("click", () => submitExam(false));
+
+function submitExam(timeExpired) {
+    if (examSubmitted) return;
+    if (!timeExpired) {
+        const unanswered = answers.filter(a => a === null).length;
+        const message = unanswered
+            ? `You have ${unanswered} unanswered question(s). Submit anyway?`
+            : "Are you sure you want to submit your exam?";
+        if (!confirm(message)) return;
+    }
+
+    examSubmitted = true;
+    clearInterval(timerInterval);
+    calculateResults();
+    showResults();
+}
+
+function calculateResults() {
+    const score = questions.reduce((total,q,index) =>
+        total + (answers[index] === (q.correctedAnswer ?? q.answer) ? 1 : 0), 0);
+
+    const percent = Math.round(score / questions.length * 100);
+    $("finalScore").textContent = `${score}/${questions.length}`;
+    $("finalPercent").textContent = `${percent}%`;
+
+    let message = "";
+    if (percent >= 90) message = "Excellent work! You demonstrated strong logical and abstract reasoning skills.";
+    else if (percent >= 75) message = "Very good! Review the explanations to strengthen your remaining skills.";
+    else if (percent >= 60) message = "Good effort! Keep practicing the patterns and reasoning methods.";
+    else if (percent >= 40) message = "You're making progress. Revisit the lessons and try again.";
+    else message = "Keep learning and practicing. Every attempt helps improve your reasoning skills.";
+    $("resultMessage").textContent = message;
+
+    renderBreakdown();
+    renderReview();
+}
+
+function renderBreakdown() {
+    const target = $("topicBreakdown");
+    target.innerHTML = "";
+
+    topics.forEach((topic,index) => {
+        const items = questions.map((q,i) => ({q,i})).filter(item => item.q.topic === index);
+        const correct = items.filter(({q,i}) =>
+            answers[i] === (q.correctedAnswer ?? q.answer)).length;
+        const percent = Math.round(correct / items.length * 100);
+
+        const row = document.createElement("div");
+        row.className = "breakdown-row";
+        row.innerHTML = `
+            <div class="breakdown-label">
+                <span>${topic}</span>
+                <span>${correct}/${items.length}</span>
+            </div>
+            <div class="breakdown-track">
+                <div class="breakdown-fill" style="width:${percent}%"></div>
+            </div>
+        `;
+        target.appendChild(row);
+    });
+}
+
+function renderReview() {
+    const target = $("answerReview");
+    target.innerHTML = "";
+
+    questions.forEach((q,index) => {
+        const correctAnswer = q.correctedAnswer ?? q.answer;
+        const isCorrect = answers[index] === correctAnswer;
+        const userAnswer = answers[index] === null
+            ? "Not answered"
+            : `${String.fromCharCode(65+answers[index])}. ${q.options[answers[index]]}`;
+        const correctText = `${String.fromCharCode(65+correctAnswer)}. ${q.options[correctAnswer]}`;
+
+        const item = document.createElement("article");
+        item.className = "review-item " + (isCorrect ? "correct" : "incorrect");
+
+        const heading = document.createElement("h3");
+        heading.textContent = `Question ${index+1} • ${topics[q.topic]}`;
+
+        const questionText = document.createElement("p");
+        questionText.textContent = q.text;
+
+        const user = document.createElement("p");
+        user.textContent = `Your answer: ${userAnswer}`;
+
+        const correct = document.createElement("p");
+        correct.textContent = `Correct answer: ${correctText}`;
+        correct.style.fontWeight = "800";
+        correct.style.color = "var(--green)";
+
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.textContent = "View step-by-step explanation";
+        const explanation = document.createElement("div");
+        explanation.className = "explanation";
+        const explanationText = document.createElement("p");
+        explanationText.textContent = q.explanation;
+        explanation.appendChild(explanationText);
+        details.append(summary,explanation);
+
+        item.append(heading,questionText,user,correct,details);
+        target.appendChild(item);
+    });
+}
+
+</script>
+</body>
+</html>
